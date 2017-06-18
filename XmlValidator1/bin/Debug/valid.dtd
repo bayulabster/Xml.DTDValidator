@@ -1,0 +1,514 @@
+<!ELEMENT Engine (Time, Player, Simulations, Assets, MediaCenter, AudioCenter, VoiceManager, Images, GUI, Items, ContentTypes, Conversations, QuizBlocks, Quests, Scenes)>
+<!--<!DOCTYPE Engine SYSTEM "valid.dtd">-->
+<!ATTLIST Engine Id CDATA #FIXED "Engine">
+<!ATTLIST Engine Title CDATA #REQUIRED>
+<!ATTLIST Engine TrackingCode CDATA #FIXED "UA-25584366-6">
+<!ATTLIST Engine Domain CDATA #FIXED "www.labster.com">
+<!ATTLIST Engine XmlVersion CDATA #REQUIRED>
+
+<!ELEMENT Time (#PCDATA)>
+<!ATTLIST Time Id CDATA #FIXED "EngineTime">
+<!ATTLIST Time TimeLapseMinutes CDATA #REQUIRED>
+<!ATTLIST Time TimeLapseMultiplier CDATA #REQUIRED>
+<!ATTLIST Time IterationsPerSecond CDATA #IMPLIED>
+
+<!ELEMENT Player (#PCDATA)>
+<!ATTLIST Player Id CDATA #FIXED "Player">
+<!ATTLIST Player FirstName CDATA "John">
+<!ATTLIST Player LastName CDATA "Doe">
+<!ATTLIST Player DefaultQuizMaxPoint CDATA #FIXED "10">
+<!ATTLIST Player DefaultQuizMinPoint CDATA #FIXED "2">
+<!ATTLIST Player DefaultQuizPointReduction CDATA #FIXED "2">
+<!ATTLIST Player LabPadItemId CDATA #FIXED "LabPad">
+
+<!ELEMENT Simulations (Simulation+)>
+<!ELEMENT Simulation (Actions, Conditions)>
+<!ATTLIST Simulation Id CDATA #REQUIRED>
+<!ATTLIST Simulation MinutesBetweenIterations CDATA "60">
+
+<!ELEMENT Assets (Asset+)>
+<!ELEMENT Asset (#PCDATA)>
+<!ATTLIST Asset AssetPath CDATA #REQUIRED>
+
+<!ELEMENT MediaCenter (#PCDATA)>
+<!ATTLIST MediaCenter Id CDATA #FIXED "MediaCenter">
+<!ATTLIST MediaCenter MediaList CDATA #FIXED "MediaList">
+
+<!ELEMENT AudioCenter (#PCDATA)>
+<!ATTLIST AudioCenter ExternalPath CDATA #FIXED "AudioList">
+
+<!ELEMENT VoiceManager (Voice+)>
+<!ATTLIST VoiceManager IsEnabled CDATA #REQUIRED>
+<!ATTLIST VoiceManager DefaultVoiceId CDATA "DefaultVoice">
+<!ATTLIST VoiceManager IsLogEnabled CDATA "false">
+<!ELEMENT Voice (#PCDATA)>
+<!ATTLIST Voice Id CDATA #REQUIRED>
+<!ATTLIST Voice GameObjectId CDATA #IMPLIED>
+<!ATTLIST Voice Gender CDATA #REQUIRED>
+<!ATTLIST Voice Group CDATA #IMPLIED>
+
+<!ELEMENT Images (Image*)>
+<!ELEMENT Image (#PCDATA)>
+<!ATTLIST Image Id CDATA #REQUIRED>
+<!ATTLIST Image Title CDATA #IMPLIED>
+<!ATTLIST Image URL CDATA #IMPLIED>
+<!ATTLIST Image IsUnlocked CDATA "false">
+
+<!ELEMENT GUI (GUIExternal+, GUITooltip3D*, GUIScreen*)>
+<!ELEMENT GUIExternal (#PCDATA)*>
+<!ATTLIST GUIExternal Type (GUIPanel|GUIDialogue|GUITooltip|GUIScreen|GUIPopup) #REQUIRED>
+<!ATTLIST GUIExternal XmlPath CDATA #REQUIRED>
+
+<!ELEMENT GUITooltip3D (Label)*>
+<!ATTLIST GUITooltip3D Id CDATA #FIXED "Tooltip1">
+<!ATTLIST GUITooltip3D AtlasPath CDATA #IMPLIED>
+<!ATTLIST GUITooltip3D Align CDATA #IMPLIED>
+<!ATTLIST GUITooltip3D Offset CDATA #IMPLIED>
+<!ATTLIST GUITooltip3D FontPath CDATA #IMPLIED>
+<!ATTLIST GUITooltip3D Depth CDATA #IMPLIED>
+
+<!ELEMENT GUIScreen (Page*, Panel*, Label*, Button*, RelativeImage*)*>
+<!ATTLIST GUIScreen Id CDATA #REQUIRED>
+<!ATTLIST GUIScreen FontPath CDATA #REQUIRED>
+<!ATTLIST GUIScreen AtlasPath CDATA #REQUIRED>
+<!ATTLIST GUIScreen Align CDATA #REQUIRED>
+<!ATTLIST GUIScreen Resolution CDATA #REQUIRED>
+<!ATTLIST GUIScreen Depth CDATA #REQUIRED>
+<!ATTLIST GUIScreen Comments CDATA #IMPLIED>
+
+<!ELEMENT Page (#PCDATA)*>
+<!ATTLIST Page Id CDATA #IMPLIED>
+<!ATTLIST Page Align CDATA #IMPLIED>
+<!ATTLIST Page ComparisonValue CDATA #IMPLIED>
+<!ATTLIST Page ComparisonVisibility CDATA #IMPLIED>
+<!ATTLIST Page Depth CDATA #IMPLIED>
+<!ATTLIST Page IsVisible CDATA #IMPLIED>
+<!ATTLIST Page Position CDATA #IMPLIED>
+
+<!ELEMENT Panel (#PCDATA)*>
+<!ATTLIST Panel Id CDATA #IMPLIED>
+<!ATTLIST Panel Align CDATA #IMPLIED>
+<!ATTLIST Panel ComparisonValue CDATA #IMPLIED>
+<!ATTLIST Panel ComparisonVisibility CDATA #IMPLIED>
+<!ATTLIST Panel Depth CDATA #IMPLIED>
+<!ATTLIST Panel IsVisible CDATA #IMPLIED>
+<!ATTLIST Panel Position CDATA #IMPLIED>
+
+<!ELEMENT Label (#PCDATA)*>
+<!ATTLIST Label Id CDATA #IMPLIED>
+<!ATTLIST Label Align CDATA #IMPLIED>
+<!ATTLIST Label AutoResizeWithLabel CDATA #IMPLIED>
+<!ATTLIST Label AutoResizeOffset CDATA #IMPLIED>
+<!ATTLIST Label Color CDATA #IMPLIED>
+<!ATTLIST Label ComparisonValue CDATA #IMPLIED>
+<!ATTLIST Label ComparisonVisibility CDATA #IMPLIED>
+<!ATTLIST Label Depth CDATA #IMPLIED>
+<!ATTLIST Label ImageSource CDATA #IMPLIED>
+<!ATTLIST Label Name CDATA #IMPLIED>
+<!ATTLIST Label Position CDATA #IMPLIED>
+<!ATTLIST Label Size CDATA #IMPLIED>
+<!ATTLIST Label Text CDATA #IMPLIED>
+<!ATTLIST Label TextSize CDATA #IMPLIED>
+<!ATTLIST Label TileMode CDATA #IMPLIED>
+
+<!ELEMENT Button (#PCDATA)*>
+<!ATTLIST Button Id CDATA #IMPLIED>
+<!ATTLIST Button Align CDATA #IMPLIED>
+<!ATTLIST Button AutoResizeWithLabel CDATA #IMPLIED>
+<!ATTLIST Button AutoResizeOffset CDATA #IMPLIED>
+<!ATTLIST Button ClickMode CDATA #IMPLIED>
+<!ATTLIST Button Color CDATA #IMPLIED>
+<!ATTLIST Button Command CDATA #IMPLIED>
+<!ATTLIST Button CommandParameter CDATA #IMPLIED>
+<!ATTLIST Button ComparisonValue CDATA #IMPLIED>
+<!ATTLIST Button ComparisonVisibility CDATA #IMPLIED>
+<!ATTLIST Button Depth CDATA #IMPLIED>
+<!ATTLIST Button ImageSource CDATA #IMPLIED>
+<!ATTLIST Button Name CDATA #IMPLIED>
+<!ATTLIST Button Position CDATA #IMPLIED>
+<!ATTLIST Button RapidClickDelay CDATA #IMPLIED>
+<!ATTLIST Button Size CDATA #IMPLIED>
+<!ATTLIST Button Text CDATA #IMPLIED>
+<!ATTLIST Button TextSize CDATA #IMPLIED>
+
+<!ELEMENT RelativeImage (#PCDATA)*>
+<!ATTLIST RelativeImage Id CDATA #IMPLIED>
+<!ATTLIST RelativeImage Align CDATA #IMPLIED>
+<!ATTLIST RelativeImage ComparisonValue CDATA #IMPLIED>
+<!ATTLIST RelativeImage ComparisonVisibility CDATA #IMPLIED>
+<!ATTLIST RelativeImage Magnification CDATA #IMPLIED>
+<!ATTLIST RelativeImage Pivot CDATA #IMPLIED>
+<!ATTLIST RelativeImage Position CDATA #IMPLIED>
+<!ATTLIST RelativeImage Size CDATA #IMPLIED>
+<!ATTLIST RelativeImage TexturePosition CDATA #IMPLIED>
+
+<!ELEMENT Chart (Axes,Data)>
+<!ELEMENT Axes (Axis*)>
+<!ELEMENT Axis (#PCDATA)*>
+<!ELEMENT Data (Series*)>
+<!ELEMENT Series (#PCDATA)*>
+
+<!ELEMENT Items (Element*, Container*, FlatContainer*)*>
+<!--DETAIL-->
+
+<!ELEMENT ContentTypes (ContentType*)>
+<!ELEMENT ContentType (#PCDATA)>
+<!ATTLIST ContentType Id CDATA #REQUIRED>
+<!ATTLIST ContentType Title CDATA #REQUIRED>
+<!ATTLIST ContentType Color CDATA "255,255,255">
+<!ATTLIST ContentType Opacity CDATA "100">
+<!ATTLIST ContentType Viscosity CDATA "0">
+<!ATTLIST ContentType Simulation CDATA #IMPLIED>
+<!ATTLIST ContentType Comments CDATA #IMPLIED>
+
+<!ELEMENT Conversations (Conversation+)>
+<!ELEMENT Conversation (Options*, Triggers*)>
+<!ATTLIST Conversation Id CDATA #REQUIRED>
+<!ATTLIST Conversation Sentence CDATA #REQUIRED>
+<!ATTLIST Conversation VoiceId CDATA #IMPLIED>
+<!ATTLIST Conversation ReadMoreUrl CDATA #IMPLIED>
+<!ATTLIST Conversation ImageId CDATA #IMPLIED>
+<!ATTLIST Conversation IsContinue CDATA #IMPLIED>
+<!ATTLIST Conversation IsExplorable CDATA #IMPLIED>
+<!ATTLIST Conversation IsMuted CDATA #IMPLIED>
+<!ATTLIST Conversation Comments CDATA #IMPLIED>
+<!--obsolete-->
+<!ATTLIST Conversation NextConvId CDATA #IMPLIED>
+
+<!ELEMENT Options (Option+)>
+<!ELEMENT Option (Triggers?)>
+<!ATTLIST Option Id CDATA #REQUIRED>
+<!ATTLIST Option Sentence CDATA #REQUIRED>
+<!ATTLIST Option NextConvId CDATA #IMPLIED>
+
+<!ELEMENT QuizBlocks (QuizBlock*)>
+<!ELEMENT QuizBlock (CompletedActions*)>
+<!ATTLIST QuizBlock Id CDATA #REQUIRED>
+<!ATTLIST QuizBlock GUIDialogueId (Conversation_LabPad|Conversation_PopUpTransparant) "Conversation_LabPad">
+
+<!ELEMENT Quests (Quest)>
+<!ELEMENT Quest (Missions)>
+<!ATTLIST Quest Id CDATA #REQUIRED>
+<!ELEMENT Missions (Mission+)>
+<!ELEMENT Mission (Tasks)>
+<!ATTLIST Mission Id CDATA #REQUIRED>
+<!ATTLIST Mission Title CDATA #REQUIRED>
+<!ATTLIST Mission MustStartInOrder CDATA #FIXED "true">
+<!ATTLIST Mission IsAutoSave CDATA #IMPLIED>
+<!ATTLIST Mission IsLogHidden CDATA "true">
+<!ATTLIST Mission Comments CDATA #IMPLIED>
+<!ELEMENT Tasks (Task+)>
+<!ELEMENT Task (StartActions?, CompletedWhen, CompletedActions?, SkippedWhen?, FailedWhen?, FailedActions?)*>
+<!--DETAIL + EXPLORE DEEPER-->
+<!ATTLIST Task Id CDATA #REQUIRED>
+<!ATTLIST Task Instructions CDATA #IMPLIED>
+<!ATTLIST Task Description CDATA #IMPLIED>
+<!ATTLIST Task Title CDATA #IMPLIED>
+<!ATTLIST Task Weight CDATA #IMPLIED>
+<!ATTLIST Task IsLogHidden CDATA #IMPLIED>
+<!ATTLIST Task Comments CDATA #IMPLIED>
+<!ATTLIST Task IsMuted CDATA #IMPLIED>
+<!--obsolete?-->
+
+<!ELEMENT StartActions (AnimateHandTo*, CancelEvent*, CancelHandAnimation*, ClearData*, ControlMedia*, ControlMusic*, CopyContent*, CreateItem*, DestroyCursorElement*, DestroyItem*, DestroyPlaceholderItem*, EndConversation*, EndGame*, Explode*, GotoState*, ModifyContent*, MoveTo*, PlaySound*, RemoveData*, ResetChart*, ResetMission*, Setter*, SetData*, SetVariable*, ShowMedia*, ShowScene*, StartConversation*, StartQuizBlock*, StopSound*, Wait*)*>
+<!ATTLIST StartActions Comments CDATA #IMPLIED>
+<!ELEMENT CompletedWhen (DataCondition?|CompositeCondition?)>
+<!ATTLIST CompletedWhen Comments CDATA #IMPLIED>
+<!ELEMENT CompletedActions (AnimateHandTo*, CancelEvent*, CancelHandAnimation*, ClearData*, ControlMedia*, ControlMusic*, CopyContent*, CreateItem*, DestroyCursorElement*, DestroyItem*, DestroyPlaceholderItem*, EndConversation*, EndGame*, Explode*, GotoState*, ModifyContent*, MoveTo*, PlaySound*, RemoveData*, ResetChart*, ResetMission*, Setter*, SetData*, SetVariable*, ShowMedia*, ShowScene*, StartConversation*, StartQuizBlock*, StopSound*, Wait*)*>
+<!ATTLIST CompletedActions Comments CDATA #IMPLIED>
+<!ELEMENT SkippedWhen (DataCondition?|CompositeCondition?)>
+<!ATTLIST SkippedWhen Comments CDATA #IMPLIED>
+<!ELEMENT FailedWhen (DataCondition?|CompositeCondition?)>
+<!ATTLIST FailedWhen Comments CDATA #IMPLIED>
+<!ELEMENT FailedActions (AnimateHandTo*, CancelEvent*, CancelHandAnimation*, ClearData*, ControlMedia*, ControlMusic*, CopyContent*, CreateItem*, DestroyCursorElement*, DestroyItem*, DestroyPlaceholderItem*, EndConversation*, EndGame*, Explode*, GotoState*, ModifyContent*, MoveTo*, PlaySound*, RemoveData*, ResetChart*, ResetMission*, Setter*, SetData*, SetVariable*, ShowMedia*, ShowScene*, StartConversation*, StartQuizBlock*, StopSound*, Wait*)*>
+<!ATTLIST FailedActions Comments CDATA #IMPLIED>
+
+<!ELEMENT Scenes (Scene+)>
+<!ELEMENT Scene (Triggers*, Elements*, StateGroups*, Screens*, Decals*, Parameters*)>
+<!ATTLIST Scene Id CDATA #REQUIRED>
+<!ATTLIST Scene Title CDATA #REQUIRED>
+<!ATTLIST Scene AssetPath CDATA #REQUIRED>
+
+<!ELEMENT Elements (Assistant*, Container*, Element*, FlatContainer*, Placeholder*, Surface*)*>
+
+<!ELEMENT Assistant (Triggers*, Elements*, StateGroups*, Screens*, Decals*, Parameters*)>
+<!ATTLIST Assistant Id CDATA #REQUIRED>
+<!ATTLIST Assistant SourceId CDATA #REQUIRED>
+<!ATTLIST Assistant GameObjectId CDATA #REQUIRED>
+<!ATTLIST Assistant Position CDATA #IMPLIED>
+<!ATTLIST Assistant Rotation CDATA #IMPLIED>
+<!ATTLIST Assistant SurfaceOffset CDATA #IMPLIED>
+<!ATTLIST Assistant Mass CDATA #IMPLIED>
+<!ATTLIST Assistant IsClickable CDATA #IMPLIED>
+<!ATTLIST Assistant IsHighlightable CDATA #IMPLIED>
+<!ATTLIST Assistant IsVisible CDATA #IMPLIED>
+<!ATTLIST Assistant Tooltip CDATA #IMPLIED>
+<!ATTLIST Assistant ExtendedTooltip CDATA #IMPLIED>
+<!ATTLIST Assistant Temperature CDATA #IMPLIED>
+<!ATTLIST Assistant InheritTemperature CDATA #IMPLIED>
+<!ATTLIST Assistant Comments CDATA #IMPLIED>
+
+<!ELEMENT Container (Triggers*, Elements*, StateGroups*, Screens*, Decals*, Parameters*, Contents*)>
+<!ATTLIST Container Id CDATA #REQUIRED>
+<!ATTLIST Container SourceId CDATA #IMPLIED>
+<!ATTLIST Container GameObjectId CDATA #IMPLIED>
+<!ATTLIST Container ItemId CDATA #IMPLIED>
+<!ATTLIST Container MaxAmount CDATA #REQUIRED>
+<!ATTLIST Container AcceptableContents CDATA #IMPLIED>
+<!ATTLIST Container AllowContentPickup CDATA #IMPLIED>
+<!ATTLIST Container AllowContentTransfer CDATA #IMPLIED>
+<!ATTLIST Container DropAmount CDATA #IMPLIED>
+<!ATTLIST Container DropoffRate CDATA #IMPLIED>
+<!ATTLIST Container PickupRate CDATA #IMPLIED>
+<!ATTLIST Container Position CDATA #IMPLIED>
+<!ATTLIST Container Rotation CDATA #IMPLIED>
+<!ATTLIST Container SurfaceOffset CDATA #IMPLIED>
+<!ATTLIST Container Mass CDATA #IMPLIED>
+<!ATTLIST Container IsClickable CDATA #IMPLIED>
+<!ATTLIST Container IsFocusable CDATA #IMPLIED>
+<!ATTLIST Container IsHighlightable CDATA #IMPLIED>
+<!ATTLIST Container IsPickUpAllowed CDATA #IMPLIED>
+<!ATTLIST Container IsVisible CDATA #IMPLIED>
+<!ATTLIST Container Tooltip CDATA #IMPLIED>
+<!ATTLIST Container ExtendedTooltip CDATA #IMPLIED>
+<!ATTLIST Container ContentsTooltip CDATA #IMPLIED>
+<!ATTLIST Container Temperature CDATA #IMPLIED>
+<!ATTLIST Container InheritTemperature CDATA #IMPLIED>
+<!ATTLIST Container Comments CDATA #IMPLIED>
+<!ATTLIST Container SurfaceRadius CDATA #IMPLIED>
+<!--obsolete-->
+
+<!ELEMENT Element (Triggers*, Elements*, StateGroups*, Screens*, Decals*, Parameters*)>
+<!ATTLIST Element Id CDATA #REQUIRED>
+<!ATTLIST Element SourceId CDATA #IMPLIED>
+<!ATTLIST Element GameObjectId CDATA #IMPLIED>
+<!ATTLIST Element ItemId CDATA #IMPLIED>
+<!ATTLIST Element Position CDATA #IMPLIED>
+<!ATTLIST Element Rotation CDATA #IMPLIED>
+<!ATTLIST Element SurfaceOffset CDATA #IMPLIED>
+<!ATTLIST Element Mass CDATA #IMPLIED>
+<!ATTLIST Element IsClickable CDATA #IMPLIED>
+<!ATTLIST Element IsFocusable CDATA #IMPLIED>
+<!ATTLIST Element IsHighlightable CDATA #IMPLIED>
+<!ATTLIST Element IsPickUpAllowed CDATA #IMPLIED>
+<!ATTLIST Element IsVisible CDATA #IMPLIED>
+<!ATTLIST Element Tooltip CDATA #IMPLIED>
+<!ATTLIST Element ExtendedTooltip CDATA #IMPLIED>
+<!ATTLIST Element Temperature CDATA #IMPLIED>
+<!ATTLIST Element InheritTemperature CDATA #IMPLIED>
+<!ATTLIST Element Comments CDATA #IMPLIED>
+
+<!ELEMENT FlatContainer (Triggers*, Elements*, StateGroups*, Screens*, Decals*, Parameters*, Contents*, SurfacePoints*)>
+<!ATTLIST FlatContainer Id CDATA #REQUIRED>
+<!ATTLIST FlatContainer SourceId CDATA #IMPLIED>
+<!ATTLIST FlatContainer GameObjectId CDATA #IMPLIED>
+<!ATTLIST FlatContainer ItemId CDATA #IMPLIED>
+<!ATTLIST FlatContainer StreakingColor CDATA #REQUIRED>
+<!ATTLIST FlatContainer BackgroundColor CDATA #REQUIRED>
+<!ATTLIST FlatContainer Density CDATA #REQUIRED>
+<!ATTLIST FlatContainer Resolution CDATA #REQUIRED>
+<!ATTLIST FlatContainer MaxAmount CDATA #REQUIRED>
+<!ATTLIST FlatContainer AcceptableContents CDATA #IMPLIED>
+<!ATTLIST FlatContainer AllowContentPickup CDATA #IMPLIED>
+<!ATTLIST FlatContainer AllowContentTransfer CDATA #IMPLIED>
+<!ATTLIST FlatContainer DropAmount CDATA #IMPLIED>
+<!ATTLIST FlatContainer DropoffRate CDATA #IMPLIED>
+<!ATTLIST FlatContainer PickupRate CDATA #IMPLIED>
+<!ATTLIST FlatContainer Position CDATA #IMPLIED>
+<!ATTLIST FlatContainer Rotation CDATA #IMPLIED>
+<!ATTLIST FlatContainer SurfaceOffset CDATA #IMPLIED>
+<!ATTLIST FlatContainer Mass CDATA #IMPLIED>
+<!ATTLIST FlatContainer IsClickable CDATA #IMPLIED>
+<!ATTLIST FlatContainer IsFocusable CDATA #IMPLIED>
+<!ATTLIST FlatContainer IsHighlightable CDATA #IMPLIED>
+<!ATTLIST FlatContainer IsPickUpAllowed CDATA #IMPLIED>
+<!ATTLIST FlatContainer IsVisible CDATA #IMPLIED>
+<!ATTLIST FlatContainer Tooltip CDATA #IMPLIED>
+<!ATTLIST FlatContainer ExtendedTooltip CDATA #IMPLIED>
+<!ATTLIST FlatContainer ContentsTooltip CDATA #IMPLIED>
+<!ATTLIST FlatContainer Temperature CDATA #IMPLIED>
+<!ATTLIST FlatContainer InheritTemperature CDATA #IMPLIED>
+<!ATTLIST FlatContainer Comments CDATA #IMPLIED>
+
+<!ELEMENT Placeholder (Triggers*, Elements*, StateGroups*, Parameters*)>
+<!ATTLIST Placeholder Id CDATA #IMPLIED>
+<!ATTLIST Placeholder SourceId CDATA #IMPLIED>
+<!ATTLIST Placeholder GameObjectId CDATA #IMPLIED>
+<!ATTLIST Placeholder AcceptsItems CDATA #IMPLIED>
+<!ATTLIST Placeholder PlaceholderBehaviour CDATA #IMPLIED>
+<!ATTLIST Placeholder ItemId CDATA #IMPLIED>
+<!ATTLIST Placeholder Id CDATA #IMPLIED>
+<!ATTLIST Placeholder IsClickable CDATA #IMPLIED>
+<!ATTLIST Placeholder IsPickUpAllowed CDATA #IMPLIED>
+<!ATTLIST Placeholder IsVisible CDATA #IMPLIED>
+<!ATTLIST Placeholder BasedOn CDATA #IMPLIED>
+<!ATTLIST Placeholder Comments CDATA #IMPLIED>
+<!ATTLIST Placeholder Position CDATA #IMPLIED>
+<!ATTLIST Placeholder Rotation CDATA #IMPLIED>
+<!ATTLIST Placeholder SurfaceOffset CDATA #IMPLIED>
+<!ATTLIST Placeholder Comments CDATA #IMPLIED>
+<!ATTLIST Placeholder Tooltip CDATA #IMPLIED>
+<!ATTLIST Placeholder ExtendedTooltip CDATA #IMPLIED>
+<!--obsolete-->
+<!ATTLIST FlatContainer ExtendedTooltip CDATA #IMPLIED>
+<!--obsolete-->
+
+<!ELEMENT Surface (Elements*)>
+<!ATTLIST Surface Id CDATA #IMPLIED>
+<!ATTLIST Surface GameObjectId CDATA #IMPLIED>
+<!ATTLIST Surface Comments CDATA #IMPLIED>
+<!ATTLIST Surface IsVisible CDATA #IMPLIED>
+
+<!ELEMENT SurfacePoints (SurfaceContents)>
+<!ATTLIST SurfacePoints Points CDATA #REQUIRED>
+<!ELEMENT SurfaceContents (SurfaceContent+)>
+<!ELEMENT SurfaceContent (#PCDATA)>
+<!ATTLIST SurfaceContent Type CDATA #REQUIRED>
+<!ATTLIST SurfaceContent Amount CDATA #REQUIRED>
+<!ATTLIST SurfaceContent PointAmounts CDATA #REQUIRED>
+
+<!ELEMENT Triggers (Trigger*, EventTrigger*, NotificationTrigger*)>
+<!ATTLIST Triggers Comments CDATA #IMPLIED>
+<!ELEMENT Trigger (Conditions?,Actions)>
+<!ATTLIST Trigger Comments CDATA #IMPLIED>
+<!ELEMENT EventTrigger (Conditions?,Actions)>
+<!ATTLIST EventTrigger Event (PreviewClick|Click|Shown|PreviewDrop|Drop|ContentChanged|ItemDropped|BeginItemPickup|ItemPickedUp|PreviewFocus|Focused|PreviewDefocus|Defocused) #REQUIRED>
+<!ELEMENT NotificationTrigger (Conditions?,Actions)>
+<!ATTLIST NotificationTrigger Notification CDATA #REQUIRED>
+<!ATTLIST NotificationTrigger Parameter CDATA #IMPLIED>
+
+
+<!ELEMENT StateGroups (StateGroup+)>
+<!ELEMENT StateGroup (States)>
+<!ATTLIST StateGroup Id CDATA #IMPLIED>
+<!--must be REQUIRED-->
+<!ATTLIST StateGroup TransitionDuration CDATA #IMPLIED>
+<!ELEMENT States (State+)>
+<!ELEMENT State (Triggers*)>
+<!ATTLIST State Id CDATA #REQUIRED>
+<!ATTLIST State Id ID #REQUIRED>
+<!ATTLIST State IsDefault (true|false) #IMPLIED>
+<!ATTLIST State Title CDATA #IMPLIED>
+<!ATTLIST State AnimationId CDATA #IMPLIED>
+<!ATTLIST State AnimationEndPoint CDATA #IMPLIED>
+<!ATTLIST State AnimationSpeed CDATA #IMPLIED>
+<!ATTLIST State IsReverse CDATA #IMPLIED>
+<!ATTLIST State WrapMode CDATA #IMPLIED>
+
+<!ATTLIST State AnimatorParameterName CDATA #IMPLIED>
+<!ATTLIST State AnimatorParameterValue CDATA #IMPLIED>
+
+<!ELEMENT Screens (Screen+)>
+<!ELEMENT Screen (#PCDATA)>
+<!ATTLIST Screen Id CDATA #IMPLIED>
+<!ATTLIST Screen GameObjectId CDATA #REQUIRED>
+<!ATTLIST Screen GUIScreenId CDATA #REQUIRED>
+
+<!ELEMENT Decals (Decal+)>
+<!ELEMENT Decal (#PCDATA)>
+
+<!ELEMENT Parameters (Parameter+)>
+<!ELEMENT Parameter (#PCDATA)>
+<!ATTLIST Parameter Id CDATA #REQUIRED>
+<!ATTLIST Parameter Value CDATA #REQUIRED>
+
+<!ELEMENT Contents (Content+)>
+<!ELEMENT Content (#PCDATA)>
+<!ATTLIST Content Type CDATA #REQUIRED>
+<!ATTLIST Content Amount CDATA #REQUIRED>
+
+<!ELEMENT Actions (AnimateHandTo*, CancelEvent*, CancelHandAnimation*, ClearData*, ControlMedia*, ControlMusic*, CopyContent*, CreateItem*, DestroyCursorElement*, DestroyItem*, DestroyPlaceholderItem*, EndConversation*, EndGame*, Explode*, GotoState*, ModifyContent*, MoveTo*, PlaySound*, RemoveData*, ResetChart*, ResetMission*, Setter*, SetData*, SetVariable*, ShowMedia*, ShowScene*, StartConversation*, StartQuizBlock*, StopSound*, Wait*)*>
+<!ELEMENT AnimateHandTo (Conditions?)>
+<!ATTLIST AnimateHandTo Target CDATA #IMPLIED>
+<!ATTLIST AnimateHandTo IsWaitUntilComplete CDATA #IMPLIED>
+<!ATTLIST AnimateHandTo IsReverse CDATA #IMPLIED>
+<!ATTLIST AnimateHandTo AnimatorState CDATA #IMPLIED>
+<!ATTLIST AnimateHandTo Duration CDATA #IMPLIED>
+<!ATTLIST AnimateHandTo Repeat CDATA #IMPLIED>
+<!ELEMENT CancelEvent EMPTY>
+<!ELEMENT CancelHandAnimation (#PCDATA)*>
+<!ELEMENT ClearData (#PCDATA)*>
+<!ELEMENT ControlMedia (#PCDATA)*>
+<!ATTLIST ControlMedia Action CDATA #REQUIRED>
+<!ATTLIST ControlMedia HasFrames CDATA #IMPLIED>
+<!ATTLIST ControlMedia EventName CDATA #IMPLIED>
+<!ATTLIST ControlMedia ObjectName CDATA #IMPLIED>
+<!ELEMENT ControlMusic (#PCDATA)*>
+<!ELEMENT CopyContent (#PCDATA)*>
+<!ELEMENT CreateItem (Conditions?)>
+<!ATTLIST CreateItem Target CDATA #REQUIRED>
+<!ATTLIST CreateItem ItemId CDATA #REQUIRED>
+<!ATTLIST CreateItem NewId CDATA #IMPLIED>
+<!ELEMENT DestroyCursorElement (#PCDATA)*>
+<!ELEMENT DestroyItem (#PCDATA)*>
+<!ELEMENT DestroyPlaceholderItem (Conditions?)>
+<!ATTLIST DestroyPlaceholderItem Target CDATA #REQUIRED>
+<!ATTLIST DestroyPlaceholderItem DestroyAll (true|false) #REQUIRED>
+<!ATTLIST DestroyPlaceholderItem ItemId CDATA "{Any}">
+<!ELEMENT EndConversation (Conditions?)>
+<!ATTLIST EndConversation Target CDATA #REQUIRED>
+<!ELEMENT EndGame EMPTY>
+<!ELEMENT Explode (#PCDATA)*>
+<!ELEMENT GotoState (Conditions?)>
+<!ATTLIST GotoState Target CDATA #IMPLIED>
+<!ATTLIST GotoState StateId CDATA #REQUIRED>
+<!ATTLIST GotoState Comments CDATA #IMPLIED>
+<!ELEMENT ModifyContent (Conditions?)>
+<!ATTLIST ModifyContent Target CDATA #IMPLIED>
+<!ATTLIST ModifyContent Mode CDATA #REQUIRED>
+<!ATTLIST ModifyContent Type CDATA #IMPLIED>
+<!ATTLIST ModifyContent Amount CDATA #IMPLIED>
+<!ATTLIST ModifyContent Comments CDATA #IMPLIED>
+<!ELEMENT MoveTo (#PCDATA)*>
+<!ATTLIST MoveTo Element CDATA #IMPLIED>
+<!ATTLIST MoveTo Target CDATA #IMPLIED>
+<!ATTLIST MoveTo Position CDATA #IMPLIED>
+<!ATTLIST MoveTo Duration CDATA #IMPLIED>
+<!ELEMENT PlaySound (#PCDATA)*>
+<!ELEMENT RemoveData (#PCDATA)*>
+<!ELEMENT ResetChart (#PCDATA)*>
+<!ATTLIST ResetChart Target CDATA #IMPLIED>
+<!ELEMENT ResetMission (#PCDATA)*>
+<!ATTLIST ResetMission Target CDATA #IMPLIED>
+<!ELEMENT Setter (Conditions?)>
+<!ATTLIST Setter Target CDATA #IMPLIED>
+<!ATTLIST Setter Property CDATA #IMPLIED>
+<!ATTLIST Setter Value CDATA #IMPLIED>
+<!ATTLIST Setter Adjustment CDATA #IMPLIED>
+<!ATTLIST Setter Comments CDATA #IMPLIED>
+<!ELEMENT SetData (#PCDATA)*>
+<!ELEMENT SetVariable (#PCDATA)*>
+<!ATTLIST SetVariable Variable CDATA #REQUIRED>
+<!ATTLIST SetVariable Expression CDATA #REQUIRED>
+<!ATTLIST SetVariable DebugOutput CDATA #IMPLIED>
+<!ELEMENT ShowMedia (Conditions?)>
+<!ATTLIST ShowMedia Source CDATA #REQUIRED>
+<!ATTLIST ShowMedia AllowSkip CDATA "false">
+<!ATTLIST ShowMedia AllowContinue CDATA "false">
+<!ELEMENT ShowScene (#PCDATA)*>
+<!ATTLIST ShowScene SceneId CDATA #REQUIRED>
+<!ELEMENT StartConversation (Conditions?)>
+<!ATTLIST StartConversation Target (Conversation_LabPad|Conversation_PopUpTransparant|SubtitleConversation|EventConversation) #REQUIRED>
+<!ATTLIST StartConversation ConversationId CDATA #IMPLIED>
+<!ATTLIST StartConversation ConversationSentence CDATA #IMPLIED>
+<!ATTLIST StartConversation Wait CDATA "true">
+<!ELEMENT StartQuizBlock (Conditions?)>
+<!ATTLIST StartQuizBlock Target CDATA #REQUIRED>
+<!ATTLIST StartQuizBlock Wait CDATA #IMPLIED>
+<!ELEMENT StopSound (#PCDATA)*>
+<!ELEMENT Wait EMPTY>
+<!ATTLIST Wait Duration CDATA #IMPLIED>
+<!ATTLIST Wait Notification CDATA #IMPLIED>
+<!ATTLIST Wait Parameter CDATA #IMPLIED>
+
+<!ELEMENT Conditions (#PCDATA|DataCondition|CompositeCondition)*>
+<!ATTLIST Conditions Comments CDATA #IMPLIED>
+<!ELEMENT DataCondition (#PCDATA)>
+<!ATTLIST DataCondition Target CDATA #IMPLIED>
+<!ATTLIST DataCondition Property CDATA #IMPLIED>
+<!ATTLIST DataCondition Comparison (Equals|NotEquals|GreaterThan|LessThan|GreaterThanOrEqual|LessThanOrEqual|Contains|ContainsAll|ContainsOnly|ContainsInOrder|NotContains|Between) #IMPLIED>
+<!ATTLIST DataCondition Value CDATA #REQUIRED>
+<!ATTLIST DataCondition Comments CDATA #IMPLIED>
+<!ELEMENT CompositeCondition (DataCondition*,CompositeCondition*)*>
+<!ATTLIST CompositeCondition Match CDATA #IMPLIED>
+<!ATTLIST CompositeCondition Comments CDATA #IMPLIED>

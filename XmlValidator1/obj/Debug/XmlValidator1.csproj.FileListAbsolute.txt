@@ -1,0 +1,6 @@
+c:\users\bayulabster\documents\visual studio 2013\Projects\XmlValidator1\XmlValidator1\bin\Debug\XmlValidator1.exe.config
+c:\users\bayulabster\documents\visual studio 2013\Projects\XmlValidator1\XmlValidator1\bin\Debug\XmlValidator1.exe
+c:\users\bayulabster\documents\visual studio 2013\Projects\XmlValidator1\XmlValidator1\bin\Debug\XmlValidator1.pdb
+c:\users\bayulabster\documents\visual studio 2013\Projects\XmlValidator1\XmlValidator1\obj\Debug\XmlValidator1.exe
+c:\users\bayulabster\documents\visual studio 2013\Projects\XmlValidator1\XmlValidator1\obj\Debug\XmlValidator1.pdb
+C:\Users\bayulabster\documents\visual studio 2013\Projects\XmlValidator1\XmlValidator1\obj\Debug\XmlValidator1.csprojResolveAssemblyReference.cache
